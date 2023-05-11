@@ -1,0 +1,2 @@
+compile
+tsc xxx.ts
