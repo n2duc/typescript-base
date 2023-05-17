@@ -42,13 +42,13 @@ type PointB = Point & {
     z: number,
 }
 interface PointX {
-    x: number,
-    y: number
+    x: number;
+    y: number;
 }
 interface PointY extends PointX {
-    z: number,
+    z: number;
 }
-function printPoint(p: PointY) {
+function printPoint(p: PointY): void {
     console.log("Location x: " + p.x)
     console.log("Location y: " + p.y)
     console.log("Location z: " + p.z)
@@ -58,7 +58,14 @@ function printPoint(p: PointY) {
 // Array & Object
 const Cars: string[] = ["Honda", "Yamaha", "Toyota", "Tesla"]
 const scores: (string | number)[] = ["one", 1, "two", 2];
-const employees = [
+
+interface Employee {
+    id: number;
+    name: string;
+    dept: string; 
+    salary: number;
+}
+const employees: Employee[] = [
     { id: 1, name: "Williams", dept: "it", salary: 2000 },
     { id: 2, name: "Brown", dept: "hr", salary: 1100 },
     { id: 3, name: "Thomas", dept: "hr", salary: 800 },
@@ -80,18 +87,20 @@ const AuthorEmp = employees.find((employee) => {
     return employee.dept === 'it';
 })
 // console.log(AuthorEmp);
-const deptList = [...new Set(employees.map(item => item.dept))]
-// console.log(deptList)
-const deptList1 = deptList.map((item) => {
-    const totalSalary = employees.filter((record) => {
-        return record.dept === item;
-    }).reduce((total, employee) => {
-        return total + employee.salary;
-    }, 0);
+const deptTag = employees.map(item => item.dept); // Lay ra cac thuoc tinh cua employees duoi dang array
+// [ 'it', 'hr', 'hr', 'it' ]
+// Cac cach remove element trung nhau
+const deptList1: string[] = [...new Set(deptTag)]
+const deptList2: string[] = Array.from(new Set(deptTag))
+const deptList3: string[] = deptTag.filter((item, index) => deptTag.indexOf(item) === index)
+
+const deptTotalSalary: object[] = deptList3.map((deptName) => {
+    const totalSalary: number = employees
+        .filter((record) => record.dept === deptName)
+        .reduce((total, employee) => total + employee.salary, 0);
     return {
-        'dept': item,
+        'dept': deptName,
         'salary': totalSalary,
     }
-}, 0)
-console.log(deptList1);
-export {}; //Fix redeclare block-scoped variable
+})
+console.log(deptTotalSalary);
