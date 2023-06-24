@@ -104,3 +104,6 @@ const deptTotalSalary: object[] = deptList3.map((deptName) => {
     }
 })
 console.log(deptTotalSalary);
+
+// export {}; add this line if your JS file have error;
+// I recommend you to use package ts-node to run ts file directly
