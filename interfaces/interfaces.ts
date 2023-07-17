@@ -19,3 +19,4 @@ const adminAccount: IAdmin = {
     age: 20,
     adminId: 1,
 }
+console.log(clientAccount.age)
