@@ -71,6 +71,8 @@ const employees: Employee[] = [
     { id: 3, name: "Thomas", dept: "hr", salary: 800 },
     { id: 4, name: "Roberts", dept: "it", salary: 2200 },
 ]
+// [ { dept: 'it', salary: 4200 }, { dept: 'hr', salary: 1900 } ]
+
 // --- Array with forEach, filter, reduce, find, map
 const carList = Cars.forEach((car, index) => {
     return index + ": " +  car;
@@ -103,7 +105,7 @@ const deptTotalSalary: object[] = deptList3.map((deptName) => {
         'salary': totalSalary,
     }
 })
-console.log(deptTotalSalary);
+console.log("Result", deptTotalSalary);
 
 // export {}; add this line if your JS file have error;
 // I recommend you to use package ts-node to run ts file directly
